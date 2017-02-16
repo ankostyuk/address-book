@@ -4,9 +4,9 @@
 
 # Application
 
-Prototype: frontend only, no backend.
+Prototype: frontend only, no backend:
 
-TODO [Address Book App Prototype](https://ankostyuk.github.io/address-book-frontend/)
+TODO [Address Book App](https://ankostyuk.github.io/address-book-frontend/)
 
 # Project
 
