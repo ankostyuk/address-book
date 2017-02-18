@@ -37,7 +37,10 @@ module.exports = function(config) {
             },
             plugins: [
                 new webpack.DefinePlugin({
-                    PRODUCTION: false
+                    CONFIG: JSON.stringify({
+                        'app.id': 'xxx-address-book',
+                        PRODUCTION: false
+                    })
                 })
             ]
         },

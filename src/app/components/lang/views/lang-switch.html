@@ -1,0 +1,3 @@
+<ul class="list-unstyled">
+    <li ng-repeat="info in langUrls track by $index"><a ng-class="{'disabled-link': info.lang === lang}" ng-href="{{info.lang === lang ? '' : info.url}}">{{_tr('app.lang.name.' + info.lang)}}</a></li>
+</ul>

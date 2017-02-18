@@ -1,0 +1,6 @@
+# App
+app.name
+
+# App langs
+app.lang.name.ru
+app.lang.name.en

@@ -23,11 +23,11 @@ module.exports = function(options) {
 
     return {
         entry: {
-            app: options.path + '/src/app/app.js'
+            app: path.resolve(options.path, 'src/app/app.js')
         },
 
         output: {
-            path: options.path + '/dist/app',
+            path: path.resolve(options.path, 'dist/app'),
             filename: 'js/[name].[chunkhash].js',
             publicPath: ''
         },
@@ -37,8 +37,11 @@ module.exports = function(options) {
         module: {
             rules: [{
                 test: /\.js$/,
-                exclude: /node_modules/,
                 enforce: 'pre',
+                exclude: [
+                    /node_modules/,
+                    /angular\/locales/
+                ],
                 use: [{
                     loader: 'eslint-loader',
                     options: {
@@ -61,17 +64,23 @@ module.exports = function(options) {
             }, {
                 test: /\.html$/,
                 loader: 'raw-loader'
+            }, {
+                test: /\.json$/,
+                use: 'json-loader'
             }]
         },
 
         plugins: [
             new ExtractTextPlugin('css/[name].[chunkhash].css'),
             new HtmlWebpackPlugin({
-                template: options.path + '/src/app/index.html',
+                template: path.resolve(options.path , 'src/app/index.html'),
                 filename: 'index.html'
             }),
             new webpack.DefinePlugin({
-                PRODUCTION: PRODUCTION
+                CONFIG: JSON.stringify({
+                    'app.id': 'xxx-address-book',
+                    PRODUCTION: PRODUCTION
+                })
             })
         ].concat(PRODUCTION ? [
             new webpack.optimize.UglifyJsPlugin({

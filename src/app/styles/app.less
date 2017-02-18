@@ -1,3 +1,29 @@
 @import './config.less';
 
-@import './loader/loader.less';
+h1, h2, h3, h4, h5, h6 {
+    color: @defaultHeaderColor;
+}
+
+/* app-header */
+.app-header {
+    margin: 40px 0 20px 0;
+}
+
+.app-header h1 {
+    margin: -18px 0 0 0;
+    padding: 0;
+    display: inline-block;
+}
+
+/* np-loader */
+[np-loader] .line-balls {
+    color: @npLoaderColor;
+}
+
+/**/
+@import './modal.less';
+@import './link.less';
+
+@import '../components/lang/styles/lang-switch.less';
+@import '../components/login/styles/login-form.less';
+@import '../components/message/styles/error-message.less';

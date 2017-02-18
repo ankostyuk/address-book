@@ -8,7 +8,11 @@
     },
 
     "globals": {
-        "PRODUCTION": true
+        "_tr": true,
+        "_trc": true,
+        "_trn": true,
+        "_trnc": true,
+        "CONFIG": true
     },
 
     "rules": {

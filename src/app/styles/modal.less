@@ -1,0 +1,34 @@
+/**/
+
+.modal-window {
+    position: fixed;
+    z-index: 1000000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-window .modal-mask {
+    position: absolute;
+    z-index: 1000001;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: @modalBackgroundColor;
+    opacity: @modalOpacity;
+}
+
+.modal-window .modal-wrapper {
+    position: absolute;
+    z-index: 1000002;
+    top: -10px;
+    left: 50%;
+    width: 400px;
+    margin-left: -200px;
+}
+
+.modal-window .modal-content {
+    padding: 25px 15px 15px 15px;
+}

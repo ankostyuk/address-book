@@ -6,18 +6,26 @@
 
 Prototype: frontend only, no backend:
 
-TODO [Address Book App](https://ankostyuk.github.io/address-book-frontend/)
+[Address Book App](https://ankostyuk.github.io/address-book-frontend/)
 
 # Project
 
 ## Init
 
 Install:
-* node
+* nodejs 5.10+
 * npm
 
 ```bash
 npm install
+```
+
+## i18n
+
+Install `gettext` for i18n support.
+
+```bash
+npm run i18n
 ```
 
 ## Dev
