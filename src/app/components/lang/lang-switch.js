@@ -18,12 +18,12 @@ module.exports = angular.module('app.lang-switch', [])
             restrict: 'A',
             template: template,
             scope: {},
-            controller: function($scope) {
+            controller: ['$scope', function($scope) {
                 angular.extend($scope, {
                     lang: i18nService.getLang(),
                     langUrls: i18nService.getLangUrls()
                 }, i18n.translateFuncs);
-            }
+            }]
         }
     }]);
 //

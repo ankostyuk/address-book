@@ -18,14 +18,14 @@ module.exports = angular.module('app.error-message', [])
             restrict: 'A',
             template: template,
             scope: {},
-            controller: function($scope) {
+            controller: ['$scope', function($scope) {
                 angular.extend($scope, {
                     // isShown: true,
                     hide: function() {
                         $scope.isShown = false;
                     }
                 });
-            }
+            }]
         }
     }]);
 //

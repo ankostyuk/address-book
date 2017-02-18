@@ -59,6 +59,6 @@ angular.module('app', _.map(ngModules, 'name'))
 
 $(function() {
     angular.bootstrap(document, ['app'], {
-        strictDi: CONFIG.PRODUCTION
+        strictDi: true
     });
 });

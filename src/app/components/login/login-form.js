@@ -17,10 +17,8 @@ module.exports = angular.module('app.login-form', [])
         return {
             restrict: 'A',
             template: template,
-            scope: {},
-            link: function(scope, element, attrs) {
-                scope.isShown = false;
-            }
+            scope: {}
+            // TODO
         }
     }]);
 //
