@@ -4,3 +4,21 @@ app.name
 # App langs
 app.lang.name.ru
 app.lang.name.en
+
+# Validation
+validation.signup.user.exist
+validation.login.invalid
+
+validation.contacts.connection.phone.empty
+validation.contacts.connection.email.empty
+validation.contacts.connection.skype.empty
+
+
+# Pluralize
+ng-pluralize.contacts
+ng-pluralize.found-contacts
+
+# Contacts
+contacts.connection.type.phone
+contacts.connection.type.email
+contacts.connection.type.skype

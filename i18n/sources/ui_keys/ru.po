@@ -25,3 +25,43 @@ msgstr "Русский"
 #: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "app.name"
 msgstr "Контакты"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.email"
+msgstr "Емейл"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.phone"
+msgstr "Телефон"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.skype"
+msgstr "Скайп"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.contacts"
+msgstr "{'0': 'Нет контактов', 'one': '{} контакт', 'few': '{} контакта', 'many': '{} контактов', 'other': '{} контакта'}"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.found-contacts"
+msgstr "{'0': 'Контактов не найдено', 'one': 'Найден {} контакт', 'few': 'Найдено {} контакта', 'many': 'Найдено {} контактов', 'other': 'Найдено {} контакта'}"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.email.empty"
+msgstr "Укажите электронную почту"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.phone.empty"
+msgstr "Укажите телефон"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.skype.empty"
+msgstr "Укажите Скайп"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.login.invalid"
+msgstr "Неправильный логин или пароль"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.signup.user.exist"
+msgstr "Пользователь с такой электронной почтой уже зарегистрирован"

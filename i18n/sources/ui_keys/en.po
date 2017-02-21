@@ -25,3 +25,43 @@ msgstr "Русский"
 #: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "app.name"
 msgstr "Address Book"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.email"
+msgstr "Email"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.phone"
+msgstr "Phone"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.skype"
+msgstr "Skype"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.contacts"
+msgstr "{'0': 'No contacts', 'one': '{} contact', 'other': '{} contacts'}"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.found-contacts"
+msgstr "{'0': 'Contacts not found', 'one': 'Found {} contact', 'other': 'Found {} contacts'}"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.email.empty"
+msgstr "Enter email"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.phone.empty"
+msgstr "Enter phone"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.skype.empty"
+msgstr "Enter Skype"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.login.invalid"
+msgstr "Incorrect login or password"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.signup.user.exist"
+msgstr "A user with this email is already registered"

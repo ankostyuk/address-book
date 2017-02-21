@@ -18,6 +18,46 @@
     "app.name": [
       null,
       "Контакты"
+    ],
+    "contacts.connection.type.email": [
+      null,
+      "Емейл"
+    ],
+    "contacts.connection.type.phone": [
+      null,
+      "Телефон"
+    ],
+    "contacts.connection.type.skype": [
+      null,
+      "Скайп"
+    ],
+    "ng-pluralize.contacts": [
+      null,
+      "{'0': 'Нет контактов', 'one': '{} контакт', 'few': '{} контакта', 'many': '{} контактов', 'other': '{} контакта'}"
+    ],
+    "ng-pluralize.found-contacts": [
+      null,
+      "{'0': 'Контактов не найдено', 'one': 'Найден {} контакт', 'few': 'Найдено {} контакта', 'many': 'Найдено {} контактов', 'other': 'Найдено {} контакта'}"
+    ],
+    "validation.contacts.connection.email.empty": [
+      null,
+      "Укажите электронную почту"
+    ],
+    "validation.contacts.connection.phone.empty": [
+      null,
+      "Укажите телефон"
+    ],
+    "validation.contacts.connection.skype.empty": [
+      null,
+      "Укажите Скайп"
+    ],
+    "validation.login.invalid": [
+      null,
+      "Неправильный логин или пароль"
+    ],
+    "validation.signup.user.exist": [
+      null,
+      "Пользователь с такой электронной почтой уже зарегистрирован"
     ]
   },
   "en": {
@@ -39,6 +79,46 @@
     "app.name": [
       null,
       "Address Book"
+    ],
+    "contacts.connection.type.email": [
+      null,
+      "Email"
+    ],
+    "contacts.connection.type.phone": [
+      null,
+      "Phone"
+    ],
+    "contacts.connection.type.skype": [
+      null,
+      "Skype"
+    ],
+    "ng-pluralize.contacts": [
+      null,
+      "{'0': 'No contacts', 'one': '{} contact', 'other': '{} contacts'}"
+    ],
+    "ng-pluralize.found-contacts": [
+      null,
+      "{'0': 'Contacts not found', 'one': 'Found {} contact', 'other': 'Found {} contacts'}"
+    ],
+    "validation.contacts.connection.email.empty": [
+      null,
+      "Enter email"
+    ],
+    "validation.contacts.connection.phone.empty": [
+      null,
+      "Enter phone"
+    ],
+    "validation.contacts.connection.skype.empty": [
+      null,
+      "Enter Skype"
+    ],
+    "validation.login.invalid": [
+      null,
+      "Incorrect login or password"
+    ],
+    "validation.signup.user.exist": [
+      null,
+      "A user with this email is already registered"
     ]
   }
 }

@@ -1,0 +1,27 @@
+<form name="form" ng-submit="submit()">
+    <h3 class="form-header">${_trc("Регистрация", "Регистрация в приложении")}</h3>
+    <fieldset ng-disabled="pending">
+        <div class="form-group">
+            <label for="signupName">${_tr("Имя")}</label>
+            <input id="signupName" class="form-control" type="text" ng-model="signupData.name" name="name" required>
+        </div>
+        <div class="form-group has-feedback">
+            <label for="signupEmail">${_tr("Электронная почта")}</label>
+            <input id="signupEmail" class="form-control" type="email" ng-model="signupData.email" name="email" required>
+            <span class="glyphicon glyphicon-asterisk form-control-feedback error-email"></span>
+        </div>
+        <div class="form-group">
+            <label for="signupPassword">${_tr("Пароль")}</label>
+            <input id="signupPassword" class="form-control" type="password" ng-model="signupData.password" name="password" required>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button class="btn" type="submit" ng-class="form.$invalid ? 'btn-default' : 'btn-success'" ng-disabled="form.$invalid">${_trc("Зарегистрироваться", "Аутентификация, авторизация в приложении")}</button>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button class="btn btn-link plain" type="button" ng-click="showForm('login')">${_trc("Вход", "Вход в приложение")}</button>
+            </div>
+        </div>
+        <div app-remote-validation-info ng-show="remoteValidation"></div>
+    </fieldset>
+</form>

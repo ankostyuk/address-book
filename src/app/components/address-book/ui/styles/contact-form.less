@@ -1,0 +1,188 @@
+/**/
+
+@contactNameHeaderMinWidth: 300px;
+@contactNameHeaderMaxWidth: 600px;
+@contactConnectionValueCellMinWidth: 300px;
+@contactConnectionValueCellMaxWidth: 400px;
+
+[app-address-book-contact-form] .contact-form-wrapper {
+    padding-left: 40px;
+}
+
+[app-address-book-contact-form] .tools {
+    margin-bottom: 20px;
+}
+
+[app-address-book-contact-form] .empty-info {
+    padding-top: 70px;
+}
+
+[app-address-book-contact-form] form  {
+    padding-top: 28px;
+    /*padding-bottom: 120px;*/
+}
+
+
+[app-address-book-contact-form] .contact-name-header {
+    position: relative;
+    min-width: @contactNameHeaderMinWidth;
+    max-width: @contactNameHeaderMaxWidth;
+    margin: 0 0 40px 0;
+}
+[app-address-book-contact-form] .contact-name-header .text {
+    display: inline-block;
+    min-width: @contactNameHeaderMinWidth;
+    max-width: @contactNameHeaderMaxWidth;
+    .text-ellipsis;
+}
+[app-address-book-contact-form] .contact-name-header .text .glyphicon {
+    top: 0;
+    margin-left: 10px;
+    font-size: 14px;
+}
+[app-address-book-contact-form] .contact-name-header .inline {
+    position: absolute;
+    left: -13px;
+    top: -4px;
+    right: 20px;
+}
+[app-address-book-contact-form] .contact-name-header .inline input {
+    font-size: inherit;
+}
+[app-address-book-contact-form] .contact-name-header .inline .form-control-feedback {
+    font-size: 14px;
+}
+
+[app-address-book-contact-form] .connections {
+    display: table;
+    margin: 0 0 40px 0;
+}
+
+[app-address-book-contact-form] .connection {
+    display: table-row;
+}
+
+[app-address-book-contact-form] .connection-cell {
+    display: table-cell;
+    position: relative;
+    padding: 5px 10px;
+}
+[app-address-book-contact-form] .connection-cell .action {
+    padding: 1px 4px;
+}
+
+[app-address-book-contact-form] .connection .text {
+    display: inline-block;
+}
+[app-address-book-contact-form] .connection .text .glyphicon {
+    top: 3px;
+    margin-left: 5px;
+}
+
+[app-address-book-contact-form] .connection .inline {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+[app-address-book-contact-form] .connection-type {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: right;
+}
+
+[app-address-book-contact-form] .connection-type {
+    width: 70px;
+}
+html[lang=ru] [app-address-book-contact-form] .connection-type {
+    width: 95px;
+}
+html[lang=en] [app-address-book-contact-form] .connection-type {
+    width: 75px;
+}
+
+[app-address-book-contact-form] .connection-type .text {
+    padding: 3px 10px 3px 20px;
+    color: @defaultDisableColor;
+}
+[app-address-book-contact-form] .connection-type .inline {
+    left: auto;
+    top: 6px;
+    right: 5px;
+}
+[app-address-book-contact-form] .connection-type .inline button {
+    padding: 1px 4px;
+}
+.dropdown-menu > li > a {
+    padding: 3px 15px;
+    cursor: default;
+}
+
+[app-address-book-contact-form] .connection-value {
+    min-width: @contactConnectionValueCellMinWidth;
+    max-width: @contactConnectionValueCellMaxWidth;
+}
+[app-address-book-contact-form] .connection-value .text {
+    min-width: @contactConnectionValueCellMinWidth;
+    max-width: @contactConnectionValueCellMaxWidth;
+    vertical-align: top;
+    .text-ellipsis;
+}
+[app-address-book-contact-form] .connection-value .inline {
+    left: 4px;
+    top: 6px;
+}
+[app-address-book-contact-form] .connection-value .inline input {
+    padding: 0 5px;
+    height: 24px;
+    min-width: @contactConnectionValueCellMinWidth;
+    max-width: @contactConnectionValueCellMaxWidth;
+}
+[app-address-book-contact-form] .connection-value .inline .form-control-feedback {
+    top: -5px;
+    right: -5px;
+}
+[app-address-book-contact-form] .connection-value .inline button {
+    padding: 1px 8px;
+}
+
+
+[app-address-book-contact-form] .connection-delete {
+    width: 20px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+[app-address-book-contact-form] .connection.new-connection:not(:first-child) .connection-type {
+    padding-top: 14px;
+}
+[app-address-book-contact-form] .connection.new-connection .connection-type button {
+    margin-right: 10px;
+}
+
+/**/
+
+[app-address-book-contact-form] form.edit-state .inline-edited {
+    color: @defaultLinkColor;
+    cursor: pointer;
+}
+[app-address-book-contact-form] form.edit-state .inline-edited:hover {
+    color: @defaultLinkHoverColor;
+}
+[app-address-book-contact-form] form:not(.edit-state) .edit-control,
+[app-address-book-contact-form] form.edit-state .hidden-on-edit-state {
+    visibility: hidden;
+}
+[app-address-book-contact-form] form [app-address-book-contact-inline-edit]:not(.inline-edit-open) .inline-edit-control {
+    display: none;
+}
+[app-address-book-contact-form] form [app-address-book-contact-inline-edit].inline-edit-open .inline-edited {
+    visibility: hidden;
+}
+
+/**/
+
+[app-address-book-contact-form] .do-edit {
+    width: 120px;
+}

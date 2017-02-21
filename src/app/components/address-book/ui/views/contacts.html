@@ -1,0 +1,16 @@
+<div class="tools">
+    <div class="__input-group search">
+        <input class="form-control" ng-model="search.name">
+        <span class="glyphicon glyphicon-search form-control-feedback left"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback right action" ng-show="isSearch()" ng-click="search.name = ''"></span>
+    </div>
+</div>
+<div class="contacts-info" ng-hide="isSearch()">
+    <span ng-pluralize count="contacts.length" when="${_tr('ng-pluralize.contacts')}"></span>
+</div>
+<div class="contacts-info" ng-show="isSearch()">
+    <span ng-pluralize count="foundContacts.length" when="${_tr('ng-pluralize.found-contacts')}"></span><span ng-show="foundContacts.length">...</span>
+</div>
+<ul class="list-unstyled contacts">
+    <li class="contact" ng-class="{'active': currentContact.id === contact.id}" ng-click="selectContact(contact)" ng-repeat="contact in contacts | filter:search:strict as foundContacts">{{contact.name}}</li>
+</ul>

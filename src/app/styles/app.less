@@ -1,12 +1,9 @@
 @import './config.less';
 
-h1, h2, h3, h4, h5, h6 {
-    color: @defaultHeaderColor;
-}
-
 /* app-header */
 .app-header {
-    margin: 40px 0 20px 0;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .app-header h1 {
@@ -15,15 +12,22 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
 }
 
-/* np-loader */
-[np-loader] .line-balls {
-    color: @npLoaderColor;
+/* app-footer */
+.app-footer {
+    margin-top: 80px;
+    margin-bottom: 40px;
 }
 
-/**/
+@import './text.less';
 @import './modal.less';
+@import './button.less';
 @import './link.less';
+@import './form.less';
 
-@import '../components/lang/styles/lang-switch.less';
-@import '../components/login/styles/login-form.less';
-@import '../components/message/styles/error-message.less';
+@import './np-loader.less';
+
+@import '../components/address-book/ui/styles/address-book-ui.less';
+@import '../components/lang/ui/styles/lang-ui.less';
+@import '../components/message/ui/styles/message-ui.less';
+@import '../components/security/ui/styles/security-ui.less';
+@import '../components/user/ui/styles/user-ui.less';

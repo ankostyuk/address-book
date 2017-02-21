@@ -7,23 +7,22 @@
         <meta content="Test for Fullstack Developer to O:LABS" name=description>
         <meta content="ankostyuk" name=author>
         <title ng-bind='appConfig.name'>Address Book</title>
-    <link href="css/app.8bc6625e3ce55db404a6.css" rel="stylesheet"></head>
+    <link href="css/app.03686414768f8023c214.css" rel="stylesheet"></head>
 
     <body class="xxx-address-book">
-        <div np-loader ng-hide="isAppReady()"><div class="line-balls"></div></div>
-        <div app-login-form></div>
-        <div app-error-message></div>
         <div class="container">
             <div class="row app-header">
                 <div class="col-xs-5">
                     <h1>{{::appConfig.name}}</h1>
                 </div>
-                <div class="col-xs-5 text-right">
-                    Костюк Андрей
-                    &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default btn-xs">Выйти</button>
-                </div>
+                <div class="col-xs-5 text-right" app-user-info></div>
                 <div class="col-xs-2 text-right" app-lang-switch></div>
             </div>
+            <div app-address-book></div>
+            <hr class="app-footer">
         </div>
-    <script type="text/javascript" src="js/app.8bc6625e3ce55db404a6.js"></script></body>
+        <div app-security-dialog></div>
+        <div app-error-message></div>
+        <div np-loader ng-hide="isAppReady()"><div class="line-balls"></div></div>
+    <script type="text/javascript" src="js/app.03686414768f8023c214.js"></script></body>
 </html>

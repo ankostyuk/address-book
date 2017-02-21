@@ -24,3 +24,43 @@ msgstr ""
 #: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "app.lang.name.en"
 msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.signup.user.exist"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.login.invalid"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.phone.empty"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.email.empty"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.contacts.connection.skype.empty"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.contacts"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "ng-pluralize.found-contacts"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.phone"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.email"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "contacts.connection.type.skype"
+msgstr ""

@@ -6,7 +6,7 @@ var _       = require('lodash'),
     angular = require('angular');
 
 var ngModules = [
-    require('./error-message')
+    require('./ui/message-ui')
 ];
 
 module.exports = angular.module('app.message', _.map(ngModules, 'name'));

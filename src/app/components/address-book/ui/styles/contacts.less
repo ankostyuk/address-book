@@ -1,0 +1,62 @@
+/**/
+
+@searchInputActiveIconColor: #66afe9;
+
+[app-address-book-contacts] .tools {
+    margin-bottom: 35px;
+}
+
+[app-address-book-contacts] .search input {
+    position: relative;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+[app-address-book-contacts] .search input:focus ~ .left {
+    color: @searchInputActiveIconColor;
+}
+[app-address-book-contacts] .search .form-control-feedback {
+    z-index: 10;
+}
+[app-address-book-contacts] .search .form-control-feedback.left {
+    left: 15px;
+    right: auto;
+}
+[app-address-book-contacts] .search .form-control-feedback.right {
+    left: auto;
+    right: 15px;
+}
+[app-address-book-contacts] .search .form-control-feedback.action {
+    z-index: 10;
+    cursor: pointer;
+    pointer-events: all;
+    opacity: 0.5;
+}
+[app-address-book-contacts] .search .form-control-feedback.action:hover {
+    opacity: 1;
+}
+
+[app-address-book-contacts] .contacts-info {
+    color: @defaultDisableColor;
+    text-align: center;
+}
+
+[app-address-book-contacts] .contacts {
+    margin: 20px 0 0 0;
+}
+
+[app-address-book-contacts] .contacts .contact {
+    padding: 10px 0;
+    font-size: 18px;
+    line-height: 1.5;
+    border-bottom: 1px solid @defaultLineColor;
+}
+[app-address-book-contacts] .contacts .contact:hover {
+    cursor: pointer;
+    color: @defaultLinkColor;
+}
+[app-address-book-contacts] .contacts .contact.active {
+    cursor: default;
+    color: inherit;
+    font-weight: bold;
+    border-bottom-color: @strongLineColor;
+}

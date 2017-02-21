@@ -10,20 +10,19 @@
     </head>
 
     <body class="xxx-address-book">
-        <div np-loader ng-hide="isAppReady()"><div class="line-balls"></div></div>
-        <div app-login-form></div>
-        <div app-error-message></div>
         <div class="container">
             <div class="row app-header">
                 <div class="col-xs-5">
                     <h1>{{::appConfig.name}}</h1>
                 </div>
-                <div class="col-xs-5 text-right">
-                    Костюк Андрей
-                    &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-default btn-xs">Выйти</button>
-                </div>
+                <div class="col-xs-5 text-right" app-user-info></div>
                 <div class="col-xs-2 text-right" app-lang-switch></div>
             </div>
+            <div app-address-book></div>
+            <hr class="app-footer">
         </div>
+        <div app-security-dialog></div>
+        <div app-error-message></div>
+        <div np-loader ng-hide="isAppReady()"><div class="line-balls"></div></div>
     </body>
 </html>

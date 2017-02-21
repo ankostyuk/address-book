@@ -12,6 +12,8 @@
         "_trc": true,
         "_trn": true,
         "_trnc": true,
+        "$": true,
+        "jQuery": true,
         "CONFIG": true
     },
 

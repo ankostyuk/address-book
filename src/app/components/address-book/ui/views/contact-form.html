@@ -1,0 +1,79 @@
+<div class="contact-form-wrapper">
+    <div class="tools">
+        <button class="btn btn-default as-link" type="button" ng-click="createContact()">${_tr("Новый контакт")}</button>
+    </div>
+    <div class="empty-info text-center text-muted" ng-hide="editedContact">
+        ${_tr("Выберете контакт для просмотра")}
+    </div>
+    <form name="form" ng-class="{'edit-state': editState}" ng-show="editedContact">
+        <fieldset ng-disabled="pending">
+            <h3 class="contact-name-header" app-address-book-contact-inline-edit>
+                <span class="text inline-edited" ng-show="editedContact.name">{{editedContact.name}}</span>
+                <span class="text inline-edited" ng-hide="editedContact.name">&mdash;&nbsp;${_tr("Укажите имя или наименование контакта")}<span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                <div class="inline edit-control inline-edit-control">
+                    <input class="form-control inline-edit-element" type="text" ng-model="editedContact.name" required>
+                    <span class="glyphicon glyphicon-asterisk form-control-feedback error"></span>
+                </div>
+            </h3>
+
+            <ul class="list-unstyled connections">
+                <li class="connection" ng-class="'connection-index-' + $index" ng-repeat="connection in editedContact.connections">
+                    <div class="connection-cell connection-delete">
+                        <button class="btn btn-link plain danger action edit-control" type="button" ng-click="deleteConnection(editedContact, $index)"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                    <div class="connection-cell connection-type" app-address-book-contact-connection-type>
+                        <span class="text hidden-on-edit-state">{{_tr('contacts.connection.type.' + connection.type)}}</span>
+                        <div class="btn-group inline edit-control">
+                            <button class="btn btn-default dropdown-toggle as-link" type="button" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                {{_tr('contacts.connection.type.' + connection.type)}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li ng-hide="connectionType.name === connection.type" ng-repeat="connectionType in connectionsMetaOrdered track by $index" ng-click="connection.type = connectionType.name"><a>{{_tr('contacts.connection.type.' + connectionType.name)}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="connection-cell connection-value" app-address-book-contact-inline-edit>
+                        <span class="text inline-edited xxx" ng-show="connection.value">{{connection.value}}</span>
+                        <span class="text inline-edited" ng-hide="connection.value">&mdash;&nbsp;{{_tr('validation.contacts.connection.' + connection.type + '.empty')}}<span class="glyphicon glyphicon-asterisk text-danger"></span></span>
+                        <div class="inline edit-control inline-edit-control">
+                            <input class="form-control inline-edit-element" type="text" ng-model="connection.value" required>
+                            <span class="glyphicon glyphicon-asterisk form-control-feedback error"></span>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="connection new-connection">
+                    <div class="connection-cell connection-delete"></div>
+                    <div class="connection-cell connection-type" app-address-book-contact-connection-type>
+                        <div class="btn-group">
+                            <button class="btn btn-default btn-sm dropdown-toggle as-link" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></button>
+                            <ul class="dropdown-menu">
+                                <li ng-click="addConnection(editedContact, connectionType.name)" ng-repeat="connectionType in connectionsMetaOrdered track by $index"><a>{{_tr('contacts.connection.type.' + connectionType.name)}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="connection-cell connection-value text-muted">
+                        &mdash;&nbsp;${_tr("Добавьте телефон, почту")}...
+                    </div>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-xs-6">
+                    <ul class="list-inline">
+                      <li>
+                          <button class="btn btn-default as-link do-edit" type="button" ng-hide="editState" ng-click="editState = true">${_trc("Изменить", "Изменить контакт")}</button>
+                          <button class="btn btn-success do-edit" type="button" ng-show="editState" ng-click="saveContact()" ng-disabled="form.$invalid">${_trc("Сохранить", "Сохранить измения контакта")}</button>
+                      </li>
+                      <li>
+                          <button class="btn btn-default as-link do-edit" type="button" ng-show="editState" ng-click="rollbackContactChanges()">${_trc("Отменить", "Отменить измения контакта")}</button>
+                      </li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <button class="btn btn-danger" type="button" ng-show="currentContact" np-inline-confirm="deleteContact()" confirm-text='${_tr("Точно удалить контакт?")}'>${_tr("Удалить контакт")}</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -57,7 +57,7 @@ module.exports = function(options) {
                 use: ExtractTextPlugin.extract([cssLoader, 'less-loader'])
             }, {
                 test: /\.(woff|woff2|svg)$/,
-                loader: 'url-loader?name=static/[name].[hash].[ext]&limit=10000'
+                loader: 'url-loader?name=static/[name].[hash].[ext]'
             }, {
                 test: /\.(ttf|eot)$/,
                 loader: 'file-loader?name=static/[name].[hash].[ext]'

@@ -1,0 +1,7 @@
+<div ng-show="isShown">
+    <div app-address-book-intro ng-show="isEmpty()"></div>
+    <div class="row" ng-hide="isEmpty()">
+        <div class="col-xs-4" app-address-book-contacts></div>
+        <div class="col-xs-8" app-address-book-contact-form></div>
+    </div>
+</div>
