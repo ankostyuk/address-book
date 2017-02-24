@@ -1,23 +1,5 @@
 @import './config.less';
 
-/* app-header */
-.app-header {
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.app-header h1 {
-    margin: -18px 0 0 0;
-    padding: 0;
-    display: inline-block;
-}
-
-/* app-footer */
-.app-footer {
-    margin-top: 80px;
-    margin-bottom: 40px;
-}
-
 @import './text.less';
 @import './modal.less';
 @import './button.less';
@@ -30,4 +12,23 @@
 @import '../components/lang/ui/styles/lang-ui.less';
 @import '../components/message/ui/styles/message-ui.less';
 @import '../components/security/ui/styles/security-ui.less';
-@import '../components/user/ui/styles/user-ui.less';
+
+/* app-header */
+.app-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.app-header h1 {
+    margin: -18px 0 0 0;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    .text-ellipsis;
+}
+
+/* app-footer */
+.app-footer {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

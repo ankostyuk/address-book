@@ -19,11 +19,11 @@ var ngModules = [
 
     require('commons-angular/directives/directives'),
 
+    require('app/components/helper/helper'),
     require('app/components/address-book/address-book'),
     require('app/components/lang/lang'),
     require('app/components/message/message'),
     require('app/components/security/security'),
-    require('app/components/user/user'),
 
     require('utils/utils')
 ];
@@ -38,22 +38,31 @@ angular.module('app', _.map(ngModules, 'name'))
     .constant('appConfig', {
         name: _tr('app.name'),
         resource: {
-            'user.info.url': '/user-info',
-            'signup.url': '/signup',
-            'login.url': '/login',
-            'logout.url': '/logout',
+            'user.url':     '/user',
+            'signup.url':   '/signup',
+            'login.url':    '/login',
+            'logout.url':   '/logout',
             'contacts.url': '/api/contacts'
         },
         readyDelay: 500
     })
     .constant('appEvents', {
-        'app.user': 'app.user',
-        'app.ready': 'app.ready',
-        'app.error': 'app.error'
+        'ready':                    'app.ready',
+        'security.unauthorized':    'app.security.unauthorized',
+        'security.login.required':  'app.security.login.required',
+        'security.user.signin':     'app.security.user.signin',
+        'error':                    'app.error'
     })
     //
-    .config(['$logProvider', '$compileProvider', function($logProvider, $compileProvider) {
+    .constant('appErrors', {
+        'response.error': 'app.response.error'
+    })
+    //
+    .config(['$qProvider', '$logProvider', '$compileProvider', function($qProvider, $logProvider, $compileProvider) {
+        $qProvider.errorOnUnhandledRejections(!CONFIG.PRODUCTION);
+
         $logProvider.debugEnabled(!CONFIG.PRODUCTION);
+
         $compileProvider.debugInfoEnabled(!CONFIG.PRODUCTION);
         $compileProvider.commentDirectivesEnabled(!CONFIG.PRODUCTION);
         $compileProvider.cssClassDirectivesEnabled(!CONFIG.PRODUCTION);
@@ -74,7 +83,7 @@ angular.module('app', _.map(ngModules, 'name'))
 
         $timeout(function() {
             $rootScope.app.ready = true;
-            $rootScope.$emit(appEvents['app.ready']);
+            $rootScope.$emit(appEvents['ready']);
         }, appConfig.readyDelay);
     }]);
 //

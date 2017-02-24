@@ -7,7 +7,7 @@ var _       = require('lodash'),
 
 var ngModules = [
     require('./ui/security-ui'),
-    require('./security-resource'),
+    require('./user'),
     require('./security-service')
 ];
 

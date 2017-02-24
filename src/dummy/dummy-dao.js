@@ -42,6 +42,11 @@ function findByMatches(collections, data, paths) {
     return matches ? _.find(collections, matches) : null;
 }
 
+function transformUser(user) {
+    // TODO
+    return isObjectInvalid(user) ? null : user;
+}
+
 function sortUserContacts(user) {
     if (isObjectInvalid(user)) {
         return;
@@ -92,19 +97,19 @@ var api = {
 
         storeData();
 
-        return user;
+        return transformUser(user);
     },
 
     getUserById: function(userData) {
-        return findByMatches(dummyData.users, userData, ['id']);
+        return transformUser(findByMatches(dummyData.users, userData, ['id']));
     },
 
     getUserByEmail: function(userData) {
-        return findByMatches(dummyData.users, userData, ['email']);
+        return transformUser(findByMatches(dummyData.users, userData, ['email']));
     },
 
     getUser: function(userData) {
-        return findByMatches(dummyData.users, userData, ['email', 'password']);
+        return transformUser(findByMatches(dummyData.users, userData, ['email', 'password']));
     },
 
     getUserContactById: function(user, contactId) {

@@ -7,7 +7,7 @@ app.lang.name.en
 
 # Validation
 validation.signup.user.exist
-validation.login.invalid
+validation.login.incorrect
 
 validation.contacts.connection.phone.empty
 validation.contacts.connection.email.empty

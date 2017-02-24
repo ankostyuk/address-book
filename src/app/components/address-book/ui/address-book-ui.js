@@ -11,7 +11,7 @@ var templates = {
     'contacts': require('./views/contacts.html'),
     'contact-form': require('./views/contact-form.html'),
     'address-book': require('./views/address-book.html')
-}
+};
 
 //
 var connectionsMeta = {
@@ -38,7 +38,7 @@ module.exports = angular.module('app.address-book.ui', [])
         utils.translateTemplates(templates);
     }])
     //
-    .directive('appAddressBook', ['$rootScope', 'utils', 'appEvents', 'Contact', function($rootScope, utils, appEvents, Contact) {
+    .directive('appAddressBook', ['$rootScope', 'utils', 'securityService', 'Contact', function($rootScope, utils, securityService, Contact) {
         return {
             restrict: 'A',
             template: templates['address-book'],
@@ -101,8 +101,12 @@ module.exports = angular.module('app.address-book.ui', [])
                     $scope.editState = false;
                 }
 
-                $rootScope.$on(appEvents['app.user'], function(e, user) {
-                    user ? bootstrap() : reset()
+                securityService.onUserSignin(function() {
+                    bootstrap();
+                });
+
+                securityService.onLoginRequired(function() {
+                    reset();
                 });
             }]
         }

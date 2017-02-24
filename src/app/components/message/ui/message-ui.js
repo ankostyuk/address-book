@@ -7,7 +7,7 @@ var _       = require('lodash'),
 
 var templates = {
     'error-message': require('./views/error-message.html')
-}
+};
 
 module.exports = angular.module('app.message.ui', [])
     //
@@ -28,7 +28,8 @@ module.exports = angular.module('app.message.ui', [])
                     }
                 });
 
-                $rootScope.$on(appEvents['app.error'], function() {
+                $rootScope.$on(appEvents['error'], function() {
+                    // TODO support error object: function(e, error)
                     $scope.isShown = true;
                 });
             }]

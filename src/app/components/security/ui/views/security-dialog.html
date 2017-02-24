@@ -2,8 +2,8 @@
     <div class="modal-mask"></div>
     <div class="modal-wrapper">
         <div class="modal-content">
-            <div app-login-form ng-show="isFormShown('login')"></div>
-            <div app-signup-form ng-show="isFormShown('signup')"></div>
+            <div app-login-form ng-show="currentForm === 'login'"></div>
+            <div app-signup-form ng-show="currentForm === 'signup'"></div>
         </div>
     </div>
 </div>

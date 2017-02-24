@@ -9,19 +9,10 @@ var _       = require('lodash'),
 var templates = {
     'login-form':               require('./views/login-form.html'),
     'signup-form':              require('./views/signup-form.html'),
-    'remote-validation-info':   require('./views/remote-validation-info.html'),
+    'extra-validation-info':    require('./views/extra-validation-info.html'),
+    'user-info':                require('./views/user-info.html'),
     'security-dialog':          require('./views/security-dialog.html')
-}
-
-//
-function checkFormError(error, $scope, $rootScope, appEvents) {
-    if (error.validation) {
-        // $scope.form.$setValidity('remote.validation', false);
-        $scope.remoteValidation = error.validation;
-    } else {
-        $rootScope.$emit(appEvents['app.error']);
-    }
-}
+};
 
 //
 module.exports = angular.module('app.security.ui', [])
@@ -30,36 +21,43 @@ module.exports = angular.module('app.security.ui', [])
         utils.translateTemplates(templates);
     }])
     //
-    .directive('appSecurityDialog', ['$rootScope', 'securityService', 'appEvents', function($rootScope, securityService, appEvents) {
+    .directive('appSecurityDialog', ['$rootScope', '$timeout', 'securityService', function($rootScope, $timeout, securityService) {
         return {
             restrict: 'A',
             template: templates['security-dialog'],
             scope: {},
-            controller: ['$scope', function($scope) {
-                var currentForm = 'login';
-
+            controller: ['$scope', '$element', function($scope, $element) {
                 _.extend($scope, {
                     isShown: false,
+                    currentForm: 'login',
                     hideDialog: function() {
                         $scope.isShown = false;
                     },
-                    isFormShown: function(form) {
-                        return form === currentForm;
+                    showLoginForm: function() {
+                        $scope.currentForm = 'login';
+                        focusFormElement('[app-login-form] input[name=email]');
                     },
-                    showForm: function(form) {
-                        currentForm = form;
+                    showSignupForm: function() {
+                        $scope.currentForm = 'signup';
+                        focusFormElement('[app-signup-form] input[name=name]');
                     }
                 }, i18n.translateFuncs);
 
-                $rootScope.$on(appEvents['app.user'], function(e, user) {
-                    currentForm = user ? currentForm : 'login';
-                    $scope.isShown = !user;
+                securityService.onLoginRequired(function() {
+                    $scope.showLoginForm();
+                    $scope.isShown = true;
                 });
+
+                function focusFormElement(selector) {
+                    $timeout(function() {
+                        $element.find(selector).focus();
+                    }, 100);
+                }
             }]
         }
     }])
     //
-    .directive('appSignupForm', ['$rootScope', 'appEvents', 'securityService', function($rootScope, appEvents, securityService) {
+    .directive('appSignupForm', ['$rootScope', 'appHelper', 'securityService', function($rootScope, appHelper, securityService) {
         return {
             restrict: 'A',
             template: templates['signup-form'],
@@ -68,16 +66,23 @@ module.exports = angular.module('app.security.ui', [])
                 _.extend($scope, {
                     signupData: {},
                     pending: false,
-                    remoteValidation: null,
+                    extraValidation: null,
                     submit: submit
                 });
 
                 function submit() {
                     $scope.pending = true;
-                    securityService.signup($scope.signupData, function(user, error) {
-                        error ? checkFormError(error, $scope, $rootScope, appEvents) : afterSignup();
-                        $scope.pending = false;
-                    });
+                    securityService.signup(
+                        $scope.signupData,
+                        function() {
+                            $scope.pending = false;
+                            afterSignup();
+                        },
+                        function(error) {
+                            appHelper.checkFormRemoteError(error, $scope);
+                            $scope.pending = false;
+                        }
+                    );
                 }
 
                 function afterSignup() {
@@ -86,17 +91,21 @@ module.exports = angular.module('app.security.ui', [])
 
                 function reset() {
                     $scope.signupData = {};
-                    $scope.remoteValidation = null;
+                    $scope.extraValidation = null;
                 }
 
-                $rootScope.$on(appEvents['app.user'], function() {
+                securityService.onLoginRequired(function() {
+                    reset();
+                });
+
+                securityService.onUserSignin(function() {
                     reset();
                 });
             }]
         }
     }])
     //
-    .directive('appLoginForm', ['$rootScope', 'appEvents', 'securityService', function($rootScope, appEvents, securityService) {
+    .directive('appLoginForm', ['$rootScope', 'appHelper', 'securityService', function($rootScope, appHelper, securityService) {
         return {
             restrict: 'A',
             template: templates['login-form'],
@@ -105,16 +114,23 @@ module.exports = angular.module('app.security.ui', [])
                 _.extend($scope, {
                     loginData: {},
                     pending: false,
-                    remoteValidation: null,
+                    extraValidation: null,
                     submit: submit
                 });
 
                 function submit() {
                     $scope.pending = true;
-                    securityService.login($scope.loginData, function(user, error) {
-                        error ? checkFormError(error, $scope, $rootScope, appEvents) : afterLogin();
-                        $scope.pending = false;
-                    });
+                    securityService.login(
+                        $scope.loginData,
+                        function() {
+                            $scope.pending = false;
+                            afterLogin();
+                        },
+                        function(error) {
+                            appHelper.checkFormRemoteError(error, $scope);
+                            $scope.pending = false;
+                        }
+                    );
                 }
 
                 function afterLogin() {
@@ -123,21 +139,48 @@ module.exports = angular.module('app.security.ui', [])
 
                 function reset() {
                     $scope.loginData = {};
-                    $scope.remoteValidation = null;
+                    $scope.extraValidation = null;
                 }
 
-                $rootScope.$on(appEvents['app.user'], function() {
+                securityService.onLoginRequired(function() {
+                    reset();
+                });
+
+                securityService.onUserSignin(function() {
                     reset();
                 });
             }]
         }
     }])
-    //
-    .directive('appRemoteValidationInfo', [function() {
+    // TODO move to app.directives
+    .directive('appExtraValidationInfo', [function() {
         return {
             restrict: 'A',
-            template: templates['remote-validation-info'],
+            template: templates['extra-validation-info'],
             scope: false
+        }
+    }])
+    //
+    .directive('appUserInfo', ['$rootScope', 'securityService', function($rootScope, securityService) {
+        return {
+            restrict: 'A',
+            template: templates['user-info'],
+            scope: {},
+            controller: ['$scope', function($scope) {
+                _.extend($scope, {
+                    logout: function() {
+                        securityService.logout();
+                    }
+                });
+
+                securityService.onLoginRequired(function() {
+                    $scope.user = null;
+                });
+
+                securityService.onUserSignin(function() {
+                    $scope.user = securityService.getUser();
+                });
+            }]
         }
     }]);
 //

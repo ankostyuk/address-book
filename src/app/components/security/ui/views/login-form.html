@@ -18,10 +18,10 @@
                 <button class="btn btn-link plain" type="button" ng-disabled="true">${_tr("Вспомнить пароль?")}</button>
             </div>
         </div>
-        <div app-remote-validation-info ng-show="remoteValidation"></div>
+        <div app-extra-validation-info ng-show="extraValidation"></div>
         <hr>
         <div class="text-center">
-            <button class="btn btn-link plain" type="button" ng-click="showForm('signup')">${_trc("Регистрация", "Аутентификация, авторизация в приложении")}</button>
+            <button class="btn btn-link plain" type="button" ng-click="showSignupForm()">${_trc("Регистрация", "Аутентификация, авторизация в приложении")}</button>
         </div>
     </fieldset>
 </form>
