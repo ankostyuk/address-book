@@ -58,21 +58,19 @@
                     </div>
                 </li>
             </ul>
-            <div class="row">
-                <div class="col-xs-6">
-                    <ul class="list-inline">
-                      <li>
-                          <button class="btn btn-default as-link do-edit" type="button" ng-hide="editState" ng-click="editState = true">${_trc("Изменить", "Изменить контакт")}</button>
-                          <button class="btn btn-success do-edit" type="button" ng-show="editState" ng-click="saveContact()" ng-disabled="form.$invalid">${_trc("Сохранить", "Сохранить измения контакта")}</button>
-                      </li>
-                      <li>
-                          <button class="btn btn-default as-link do-edit" type="button" ng-show="editState" ng-click="rollbackContactChanges()">${_trc("Отменить", "Отменить измения контакта")}</button>
-                      </li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <button class="btn btn-danger" type="button" ng-show="currentContact" np-inline-confirm="deleteContact()" confirm-text='${_tr("Точно удалить контакт?")}'>${_tr("Удалить контакт")}</button>
-                </div>
+            <div class="footer-tools">
+                <ul class="list-inline">
+                  <li>
+                      <button class="btn btn-default as-link do-edit" type="button" ng-hide="editState" ng-click="editState = true">${_trc("Изменить", "Изменить контакт")}</button>
+                      <button class="btn btn-success do-edit" type="button" ng-show="editState" ng-click="saveContact()" ng-disabled="form.$invalid">${_trc("Сохранить", "Сохранить измения контакта")}</button>
+                  </li>
+                  <li>
+                      <button class="btn btn-default as-link do-edit" type="button" ng-show="editState" ng-click="rollbackContactChanges()">${_trc("Отменить", "Отменить измения контакта")}</button>
+                  </li>
+                  <li class="pull-right">
+                      <button class="btn btn-danger" type="button" ng-show="currentContact" np-inline-confirm="deleteContact()" confirm-text='${_tr("Точно удалить контакт?")}'>${_tr("Удалить контакт")}</button>
+                  </li>
+                </ul>
             </div>
         </fieldset>
     </form>

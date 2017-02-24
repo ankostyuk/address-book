@@ -7,11 +7,13 @@ var angular = require('angular');
 require('angular-resource');
 
 //
-module.exports = angular.module('app.address-book.contact-resource', ['ngResource'])
+module.exports = angular.module('app.address-book.contact', ['ngResource'])
     //
-    .factory('Contact', ['$resource', function($resource) {
+    .factory('Contact', ['$resource', 'appConfig', function($resource, appConfig) {
+        var baseUrl = appConfig.resource['contacts.url'];
+
         //
-        var Contact = $resource('/contacts/:contactId', {
+        var Contact = $resource(baseUrl + '/:contactId', {
             contactId: '@id'
         }, {
             'create': {

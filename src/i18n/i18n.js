@@ -15,7 +15,12 @@ var location        = document.location,
 
 //
 function checkLang() {
-    var lang = locationUri.getQueryParamValue(langParamName) || clientStorage.getItem(langParamName) || i18nConfig.defaultLang;
+    var lang = locationUri.getQueryParamValue(langParamName) || clientStorage.getItem(langParamName);
+
+    if (!_.includes(i18nConfig.langs, lang)) {
+        lang = i18nConfig.defaultLang;
+    }
+
     clientStorage.setItem(langParamName, lang);
 }
 

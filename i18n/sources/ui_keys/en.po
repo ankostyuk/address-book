@@ -59,7 +59,7 @@ msgid "validation.contacts.connection.skype.empty"
 msgstr "Enter Skype"
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
-msgid "validation.login.invalid"
+msgid "validation.login.incorrect"
 msgstr "Incorrect login or password"
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1

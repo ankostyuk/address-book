@@ -1,0 +1,5 @@
+<ul class="list-unstyled text-danger">
+    <li ng-repeat="info in extraValidation">
+        <div ng-repeat="rejection in info.rejections">{{_tr('validation.' + info.key + '.' + rejection)}}</div>
+    </li>
+</ul>

@@ -51,7 +51,7 @@
       null,
       "Укажите Скайп"
     ],
-    "validation.login.invalid": [
+    "validation.login.incorrect": [
       null,
       "Неправильный логин или пароль"
     ],
@@ -112,7 +112,7 @@
       null,
       "Enter Skype"
     ],
-    "validation.login.invalid": [
+    "validation.login.incorrect": [
       null,
       "Incorrect login or password"
     ],

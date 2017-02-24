@@ -2,59 +2,81 @@
  * @author ankostyuk
  */
 
-var clientStorage   = require('client-storage/client-storage'),
+var _               = require('lodash'),
+    uuid            = require('uuid'),
+    clientStorage   = require('client-storage/client-storage'),
     angular         = require('angular');
 
 require('angular-mocks');
 
 var dummyDAO = require('./dummy-dao');
 
-function storeUser(user) {
-    clientStorage.setItem('userId', user ? user.id : null);
+//
+function buildUserToken() {
+    return uuid.v4();
 }
 
-function getUser() {
-    return {
-        id: clientStorage.getItem('userId')
-    };
+function storeUserToken(user, token) {
+    sroreDummyToken({
+        userId: user.id,
+        token: token
+    });
 }
 
+function getDummyToken() {
+    return clientStorage.getItem('dummyToken') || {};
+}
+
+function sroreDummyToken(token) {
+    return clientStorage.setItem('dummyToken', token);
+}
+
+function getAuthUser(headers) {
+    var token = (_.get(headers, 'Authorization') || '').replace('Bearer ', '');
+
+    if (!token) {
+        return null;
+    }
+
+    var dummyToken  = getDummyToken(),
+        userId      = (token === dummyToken.token ? dummyToken.userId : null);
+
+    return userId ? dummyDAO.getUserById({
+        id: userId
+    }) : null;
+}
+
+function authUser(user) {
+    user = _.cloneDeep(user);
+
+    var token = buildUserToken();
+
+    storeUserToken(user, token);
+    user.token = token;
+
+    return user;
+}
+
+function resetUserAuth() {
+    sroreDummyToken(null);
+}
+
+function getUserInfo(user) {
+    return _.omit(user, ['contacts', 'password']);
+}
+
+//
 module.exports = angular.module('dummy.resource-mocks', ['ngMockE2E'])
     //
     .run(['$log', '$httpBackend', function($log, $httpBackend) {
-        // user-info
-        $httpBackend.whenGET('/user-info').respond(function(method, url, data, headers, params){
+        // get user
+        $httpBackend.whenGET('/user').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
-
-            var userData    = getUser(),
-                user        = dummyDAO.getUserById(userData);
-
-            return user ? [200, user] : [401];
+            var user = getAuthUser(headers);
+            return user ? [200, getUserInfo(user)] : [401];
         });
 
-        // signup
-        $httpBackend.whenPOST('/signup').respond(function(method, url, data, headers, params){
-            $log.debug(method, url, data, headers, params);
-
-            var signupData  = angular.fromJson(data),
-                checkedUser = dummyDAO.getUserByEmail(signupData);
-
-            if (checkedUser) {
-                return [403, {
-                    validation: [{
-                        key: 'signup.user.exist'
-                    }]
-                }];
-            }
-
-            var user = dummyDAO.createUser(signupData);
-
-            storeUser(user);
-
-            return [200, user];
-        });
-
-        // login
+        // user login
         $httpBackend.whenPOST('/login').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
@@ -62,80 +84,102 @@ module.exports = angular.module('dummy.resource-mocks', ['ngMockE2E'])
                 user        = dummyDAO.getUser(loginData);
 
             if (!user) {
-                return [403, {
-                    validation: [{
-                        key: 'login.invalid'
-                    }]
+                return [400, {
+                    validation: {
+                        extra: [{
+                            key: 'login',
+                            rejections: ['incorrect']
+                        }]
+                    }
                 }];
             }
 
-            storeUser(user);
+            user = authUser(user);
 
-            return [200, user];
+            return [200, getUserInfo(user)];
         });
 
-        // logout
+        // user signup
+        $httpBackend.whenPOST('/signup').respond(function(method, url, data, headers, params){
+            $log.debug(method, url, data, headers, params);
+
+            var signupData  = angular.fromJson(data),
+                checkedUser = dummyDAO.getUserByEmail(signupData);
+
+            if (checkedUser) {
+                return [400, {
+                    validation: {
+                        extra: [{
+                            key: 'signup',
+                            rejections: ['user.exist']
+                        }]
+                    }
+                }];
+            }
+
+            var user = dummyDAO.createUser(signupData);
+
+            user = authUser(user);
+
+            return [200, getUserInfo(user)];
+        });
+
+        // user logout
         $httpBackend.whenPOST('/logout').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
-            storeUser(null);
-            return [200];
+            resetUserAuth();
+            return [204];
         });
 
         // contacts
-        $httpBackend.whenPOST('/contacts').respond(function(method, url, data, headers, params){
+        $httpBackend.whenPOST('/api/contacts').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
-            var userData    = getUser(),
-                user        = dummyDAO.getUserById(userData);
+            var user = getAuthUser(headers);
 
             if (!user) {
                 return [401];
             }
 
             var contactData = angular.fromJson(data),
-                contact     = dummyDAO.createUserContact(userData, contactData);
+                contact     = dummyDAO.createUserContact(user, contactData);
 
             return contact ? [200, contact] : [500];
         });
 
-        $httpBackend.whenPUT(/\/contacts\/(.+)/, undefined, undefined, ['id']).respond(function(method, url, data, headers, params){
+        $httpBackend.whenPUT(/\/api\/contacts\/(.+)/, undefined, undefined, ['id']).respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
-            var userData    = getUser(),
-                user        = dummyDAO.getUserById(userData);
+            var user = getAuthUser(headers);
 
             if (!user) {
                 return [401];
             }
 
             var contactData = angular.fromJson(data),
-                contact     = dummyDAO.saveUserContact(userData, params.id, contactData);
+                contact     = dummyDAO.saveUserContact(user, params.id, contactData);
 
             return contact ? [200, contact] : [500];
         });
 
-        $httpBackend.whenDELETE(/\/contacts\/(.+)/, undefined, ['id']).respond(function(method, url, data, headers, params){
+        $httpBackend.whenDELETE(/\/api\/contacts\/(.+)/, undefined, ['id']).respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
-            var userData    = getUser(),
-                user        = dummyDAO.getUserById(userData);
+            var user = getAuthUser(headers);
 
             if (!user) {
                 return [401];
             }
 
-            var contactId = dummyDAO.deleteUserContact(userData, params.id);
+            var contactId = dummyDAO.deleteUserContact(user, params.id);
 
             return contactId ? [204] : [500];
         });
 
-        $httpBackend.whenGET('/contacts').respond(function(method, url, data, headers, params){
+        $httpBackend.whenGET('/api/contacts').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
-
-            var userData    = getUser(),
-                user        = dummyDAO.getUserById(userData);
-
-            return user ? [200, dummyDAO.getUserContacts(userData)] : [401];
+            var user = getAuthUser(headers);
+            return user ? [200, dummyDAO.getUserContacts(user)] : [401];
         });
     }]);
 //

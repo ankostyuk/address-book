@@ -7,7 +7,7 @@ var _       = require('lodash'),
 
 var ngModules = [
     require('./ui/address-book-ui'),
-    require('./contact-resource')
+    require('./contact')
 ];
 
 module.exports = angular.module('app.address-book', _.map(ngModules, 'name'));

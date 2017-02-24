@@ -36,7 +36,8 @@ msgstr ""
 msgid "Выберете контакт для просмотра"
 msgstr ""
 
-#: ../src/app/components/user/ui/views/user-info.html:1
+#: ../src/app/components/__user/ui/views/user-info.html:1
+#: ../src/app/components/security/ui/views/user-info.html:1
 msgctxt "Аутентификация, авторизация в приложении"
 msgid "Выйти"
 msgstr ""

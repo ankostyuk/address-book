@@ -8,7 +8,7 @@ var _       = require('lodash'),
 
 var templates = {
     'lang-switch': require('./views/lang-switch.html')
-}
+};
 
 module.exports = angular.module('app.lang.ui', [])
     //
