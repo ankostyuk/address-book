@@ -21,7 +21,7 @@ module.exports = angular.module('app.security.ui', [])
         utils.translateTemplates(templates);
     }])
     //
-    .directive('appSecurityDialog', ['$rootScope', '$timeout', 'securityService', function($rootScope, $timeout, securityService) {
+    .directive('appSecurityDialog', ['$rootScope', '$timeout', 'securityService', 'utils', function($rootScope, $timeout, securityService, utils) {
         return {
             restrict: 'A',
             template: templates['security-dialog'],
@@ -49,9 +49,9 @@ module.exports = angular.module('app.security.ui', [])
                 });
 
                 function focusFormElement(selector) {
-                    $timeout(function() {
+                    utils.scrollTop(function() {
                         $element.find(selector).focus();
-                    }, 100);
+                    });
                 }
             }]
         }

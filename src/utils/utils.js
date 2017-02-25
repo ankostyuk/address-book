@@ -27,10 +27,10 @@ module.exports = angular.module('utils', [])
         };
 
         //
-        this.scrollTop = function() {
+        this.scrollTop = function(complete) {
             htmlBody.stop().animate({
                 scrollTop: 0
-            }, 200);
+            }, 200, 'swing', complete);
         };
 
         //

@@ -9,7 +9,7 @@
         <title ng-bind='appConfig.name'>Address Book</title>
     </head>
 
-    <body class="xxx-address-book">
+    <body class="xxx-address-book" ng-class="{'ready': isAppReady()}">
         <div class="container">
             <div class="row app-header">
                 <div class="col-xs-5">
