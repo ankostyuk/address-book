@@ -14,6 +14,7 @@
         "_trnc": true,
         "$": true,
         "jQuery": true,
+        "ga": true,
         "CONFIG": true
     },
 

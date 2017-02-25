@@ -106,3 +106,6 @@ function injectDummy() {
 
     ngModules.push(require('dummy/dummy'));
 }
+
+// Analytics
+require('./analytics');
