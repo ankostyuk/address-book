@@ -38,10 +38,10 @@ angular.module('app', _.map(ngModules, 'name'))
     .constant('appConfig', {
         name: _tr('app.name'),
         resource: {
-            'user.url':     '/user',
-            'signup.url':   '/signup',
-            'login.url':    '/login',
-            'logout.url':   '/logout',
+            'user.url':     '/api/user',
+            'signup.url':   '/api/user/signup',
+            'login.url':    '/api/user/login',
+            'logout.url':   '/api/user/logout',
             'contacts.url': '/api/contacts'
         },
         readyDelay: 500

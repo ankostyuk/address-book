@@ -69,15 +69,15 @@ function getUserInfo(user) {
 module.exports = angular.module('dummy.resource-mocks', ['ngMockE2E'])
     //
     .run(['$log', '$httpBackend', function($log, $httpBackend) {
-        // get user
-        $httpBackend.whenGET('/user').respond(function(method, url, data, headers, params){
+        // get auth user
+        $httpBackend.whenGET('/api/user').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
             var user = getAuthUser(headers);
             return user ? [200, getUserInfo(user)] : [401];
         });
 
         // user login
-        $httpBackend.whenPOST('/login').respond(function(method, url, data, headers, params){
+        $httpBackend.whenPOST('/api/user/login').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
             var loginData   = angular.fromJson(data),
@@ -100,7 +100,7 @@ module.exports = angular.module('dummy.resource-mocks', ['ngMockE2E'])
         });
 
         // user signup
-        $httpBackend.whenPOST('/signup').respond(function(method, url, data, headers, params){
+        $httpBackend.whenPOST('/api/user/signup').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
 
             var signupData  = angular.fromJson(data),
@@ -125,7 +125,7 @@ module.exports = angular.module('dummy.resource-mocks', ['ngMockE2E'])
         });
 
         // user logout
-        $httpBackend.whenPOST('/logout').respond(function(method, url, data, headers, params){
+        $httpBackend.whenPOST('/api/user/logout').respond(function(method, url, data, headers, params){
             $log.debug(method, url, data, headers, params);
             resetUserAuth();
             return [204];
