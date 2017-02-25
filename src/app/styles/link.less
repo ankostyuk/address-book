@@ -1,9 +1,10 @@
 /**/
 
-.disabled-link {
+.disabled-link, .disabled-link:hover, .disabled-link:focus, .disabled-link.focus {
    pointer-events: none;
    cursor: default;
    color: @disableLinkColor;
+   text-decoration: none;
 }
 
 .as-link {
