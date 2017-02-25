@@ -13,10 +13,18 @@
 @import '../components/message/ui/styles/message-ui.less';
 @import '../components/security/ui/styles/security-ui.less';
 
+/* container */
+.container {
+    visibility: hidden;
+}
+.ready .container {
+    visibility: visible;
+}
+
 /* app-header */
 .app-header {
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 54px;
 }
 
 .app-header h1 {
@@ -27,8 +35,33 @@
     .text-ellipsis;
 }
 
+/* lang switch bring to front */
+.app-header [app-lang-switch] {
+    position: relative;
+}
+.app-header [app-lang-switch] ul {
+    position: absolute;
+    z-index: 1500000;
+
+    top: -11px;
+    right: 0;
+
+    margin: 0;
+    padding: 10px 20px 0 5px;
+
+    background-color: @defaultBackgroundColor;
+    border-left: 1px solid @defaultBackgroundColor;
+    border-top: 1px solid @defaultBackgroundColor;
+    border-bottom: 1px solid @defaultBackgroundColor;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
 /* app-footer */
 .app-footer {
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+/* by media */
+@import './media.less';

@@ -8,7 +8,7 @@ var _       = require('lodash'),
 //
 module.exports = angular.module('app.helper', [])
     //
-    .constant('appHandledResponseErrorStatuses', [500])
+    .constant('appHandledResponseErrorStatuses', [500, 404])
     //
     .config(['$httpProvider', function($httpProvider) {
         $httpProvider.interceptors.push(['$log', '$q', '$rootScope', 'appEvents', 'appErrors', 'appHandledResponseErrorStatuses', function($log, $q, $rootScope, appEvents, appErrors, appHandledResponseErrorStatuses) {

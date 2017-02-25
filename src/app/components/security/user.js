@@ -11,9 +11,10 @@ module.exports = angular.module('app.security.user', ['ngResource'])
     //
     .factory('User', ['$resource', 'appConfig', function($resource, appConfig) {
         //
-        var User = $resource(appConfig.resource['user.url'], {}, {
+        var User = $resource(null, {}, {
             'info': {
-                method: 'GET'
+                method: 'GET',
+                url: appConfig.resource['user.url']
             },
             'login': {
                 method: 'POST',
