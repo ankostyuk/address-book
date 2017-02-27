@@ -76,6 +76,9 @@ module.exports = angular.module('app.security.service', [])
         }
 
         function succesSignin(u, successHandler) {
+            // if (!_.get(u, 'token')) {
+            //     throw new Error('No token');
+            // }
             storeUserToken(u);
             applyUser(u);
             successHandler && successHandler();

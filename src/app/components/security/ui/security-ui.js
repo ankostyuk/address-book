@@ -142,9 +142,9 @@ module.exports = angular.module('app.security.ui', [])
                     $scope.extraValidation = null;
                 }
 
-                securityService.onLoginRequired(function() {
-                    reset();
-                });
+                // securityService.onLoginRequired(function() {
+                //     reset();
+                // });
 
                 securityService.onUserSignin(function() {
                     reset();

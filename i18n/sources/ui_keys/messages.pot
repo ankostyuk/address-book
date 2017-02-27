@@ -26,11 +26,35 @@ msgid "app.lang.name.en"
 msgstr ""
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.unknown.error"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "validation.signup.user.exist"
 msgstr ""
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.email.uniqueness"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.email.custom.email"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "validation.login.incorrect"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.LOGIN_FAILED.error"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.USERNAME_EMAIL_REQUIRED.error"
+msgstr ""
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.INVALID_PASSWORD.error"
 msgstr ""
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1

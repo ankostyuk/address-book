@@ -39,6 +39,18 @@
       null,
       "{'0': 'Контактов не найдено', 'one': 'Найден {} контакт', 'few': 'Найдено {} контакта', 'many': 'Найдено {} контактов', 'other': 'Найдено {} контакта'}"
     ],
+    "validation.INVALID_PASSWORD.error": [
+      null,
+      "Укажите пароль"
+    ],
+    "validation.LOGIN_FAILED.error": [
+      null,
+      "Неправильный логин или пароль"
+    ],
+    "validation.USERNAME_EMAIL_REQUIRED.error": [
+      null,
+      "Укажите электронную почту"
+    ],
     "validation.contacts.connection.email.empty": [
       null,
       "Укажите электронную почту"
@@ -51,6 +63,14 @@
       null,
       "Укажите Скайп"
     ],
+    "validation.email.custom.email": [
+      null,
+      "Не похоже на адрес электронной почты"
+    ],
+    "validation.email.uniqueness": [
+      null,
+      "Пользователь с такой электронной почтой уже зарегистрирован"
+    ],
     "validation.login.incorrect": [
       null,
       "Неправильный логин или пароль"
@@ -58,6 +78,10 @@
     "validation.signup.user.exist": [
       null,
       "Пользователь с такой электронной почтой уже зарегистрирован"
+    ],
+    "validation.unknown.error": [
+      null,
+      "Непредвиденная ошибка"
     ]
   },
   "en": {
@@ -100,6 +124,18 @@
       null,
       "{'0': 'Contacts not found', 'one': 'Found {} contact', 'other': 'Found {} contacts'}"
     ],
+    "validation.INVALID_PASSWORD.error": [
+      null,
+      "Enter email"
+    ],
+    "validation.LOGIN_FAILED.error": [
+      null,
+      "Incorrect login or password"
+    ],
+    "validation.USERNAME_EMAIL_REQUIRED.error": [
+      null,
+      "Enter email"
+    ],
     "validation.contacts.connection.email.empty": [
       null,
       "Enter email"
@@ -112,6 +148,14 @@
       null,
       "Enter Skype"
     ],
+    "validation.email.custom.email": [
+      null,
+      "Unlike email address"
+    ],
+    "validation.email.uniqueness": [
+      null,
+      "A user with this email is already registered"
+    ],
     "validation.login.incorrect": [
       null,
       "Incorrect login or password"
@@ -119,6 +163,10 @@
     "validation.signup.user.exist": [
       null,
       "A user with this email is already registered"
+    ],
+    "validation.unknown.error": [
+      null,
+      "Unexpected error"
     ]
   }
 }

@@ -42,11 +42,6 @@ function findByMatches(collections, data, paths) {
     return matches ? _.find(collections, matches) : null;
 }
 
-function transformUser(user) {
-    // TODO
-    return isObjectInvalid(user) ? null : user;
-}
-
 function sortUserContacts(user) {
     if (isObjectInvalid(user)) {
         return;
@@ -71,6 +66,31 @@ function connectionTypeSorter(connection) {
     return _.get(connectionsMeta[connection.type], 'order');
 }
 
+function normalizeUserProperties(user) {
+    if (_.isString(user['email'])) {
+        user['email'] = user['email'].toLowerCase();
+    }
+}
+
+function transformUser(user) {
+    if (isObjectInvalid(user)) {
+        return null;
+    }
+
+    normalizeUserProperties(user);
+
+    return user;
+}
+
+function checkUserData(userData) {
+    // TODO validation
+    userData = _.pick(userData, ['id', 'name', 'email', 'password']);
+
+    normalizeUserProperties(userData);
+
+    return userData;
+}
+
 function checkContactData(contactData) {
     // TODO validation
     contactData = _.pick(contactData, ['name', 'connections']);
@@ -89,7 +109,7 @@ function checkContactData(contactData) {
 var api = {
     //
     createUser: function(userData) {
-        var user = _.extend({}, userData, {
+        var user = _.extend({}, checkUserData(userData), {
             id: uuid.v4()
         });
 
@@ -101,15 +121,15 @@ var api = {
     },
 
     getUserById: function(userData) {
-        return transformUser(findByMatches(dummyData.users, userData, ['id']));
+        return transformUser(findByMatches(dummyData.users, checkUserData(userData), ['id']));
     },
 
     getUserByEmail: function(userData) {
-        return transformUser(findByMatches(dummyData.users, userData, ['email']));
+        return transformUser(findByMatches(dummyData.users, checkUserData(userData), ['email']));
     },
 
     getUser: function(userData) {
-        return transformUser(findByMatches(dummyData.users, userData, ['email', 'password']));
+        return transformUser(findByMatches(dummyData.users, checkUserData(userData), ['email', 'password']));
     },
 
     getUserContactById: function(user, contactId) {
