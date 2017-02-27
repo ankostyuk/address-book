@@ -47,6 +47,18 @@ msgid "ng-pluralize.found-contacts"
 msgstr "{'0': 'Контактов не найдено', 'one': 'Найден {} контакт', 'few': 'Найдено {} контакта', 'many': 'Найдено {} контактов', 'other': 'Найдено {} контакта'}"
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.INVALID_PASSWORD.error"
+msgstr "Укажите пароль"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.LOGIN_FAILED.error"
+msgstr "Неправильный логин или пароль"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.USERNAME_EMAIL_REQUIRED.error"
+msgstr "Укажите электронную почту"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "validation.contacts.connection.email.empty"
 msgstr "Укажите электронную почту"
 
@@ -59,9 +71,21 @@ msgid "validation.contacts.connection.skype.empty"
 msgstr "Укажите Скайп"
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.email.custom.email"
+msgstr "Не похоже на адрес электронной почты"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.email.uniqueness"
+msgstr "Пользователь с такой электронной почтой уже зарегистрирован"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "validation.login.incorrect"
 msgstr "Неправильный логин или пароль"
 
 #: ../i18n/sources/ui_keys/src/keys.txt:1
 msgid "validation.signup.user.exist"
 msgstr "Пользователь с такой электронной почтой уже зарегистрирован"
+
+#: ../i18n/sources/ui_keys/src/keys.txt:1
+msgid "validation.unknown.error"
+msgstr "Непредвиденная ошибка"

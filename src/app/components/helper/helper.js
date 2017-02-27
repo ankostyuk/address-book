@@ -8,13 +8,13 @@ var _       = require('lodash'),
 //
 module.exports = angular.module('app.helper', [])
     //
-    .constant('appHandledResponseErrorStatuses', [500, 404])
+    .constant('appHandledHttpErrors', [400, 401, 422])
     //
     .config(['$httpProvider', function($httpProvider) {
-        $httpProvider.interceptors.push(['$log', '$q', '$rootScope', 'appEvents', 'appErrors', 'appHandledResponseErrorStatuses', function($log, $q, $rootScope, appEvents, appErrors, appHandledResponseErrorStatuses) {
+        $httpProvider.interceptors.push(['$log', '$q', '$rootScope', 'appEvents', 'appErrors', 'appHandledHttpErrors', function($log, $q, $rootScope, appEvents, appErrors, appHandledHttpErrors) {
 
             function responseErrorHandler(rejection) {
-                if (_.includes(appHandledResponseErrorStatuses, rejection.status)) {
+                if (!_.includes(appHandledHttpErrors, rejection.status)) {
                     $rootScope.$emit(appEvents['error'], {
                         type: appErrors['response.error'],
                         rejection: rejection
@@ -35,12 +35,20 @@ module.exports = angular.module('app.helper', [])
         //
         this.checkFormRemoteError = function(error, $scope) {
             // TODO model validation
-            var extraValidation = _.get(error, 'validation.extra');
+            // TODO form.$setValidity
+
+            var extraValidation =
+                _.get(error, 'validation.extra') ||
+                _.get(error, 'validation.model') || {
+                    'unknown': {
+                        key: 'unknown',
+                        rejections: ['error']
+                    }
+                };
 
             if (_.isEmpty(extraValidation)) {
                 $rootScope.$emit(appEvents['error']);
             } else {
-                // TODO form.$setValidity
                 $scope.extraValidation = extraValidation;
             }
         };

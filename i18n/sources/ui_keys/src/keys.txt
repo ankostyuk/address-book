@@ -6,8 +6,17 @@ app.lang.name.ru
 app.lang.name.en
 
 # Validation
+validation.unknown.error
+
 validation.signup.user.exist
+validation.email.uniqueness
+validation.email.custom.email
+
 validation.login.incorrect
+validation.LOGIN_FAILED.error
+
+validation.USERNAME_EMAIL_REQUIRED.error
+validation.INVALID_PASSWORD.error
 
 validation.contacts.connection.phone.empty
 validation.contacts.connection.email.empty
