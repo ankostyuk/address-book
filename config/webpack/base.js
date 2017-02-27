@@ -71,6 +71,11 @@ module.exports = function(options) {
         },
 
         plugins: [
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery',
+                'window.jQuery': 'jquery'
+            }),
             new ExtractTextPlugin('css/[name].[chunkhash].css'),
             new HtmlWebpackPlugin({
                 template: path.resolve(options.path , 'src/app/index.html'),

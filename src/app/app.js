@@ -6,10 +6,8 @@
 
 var appInfo = require('info/info');
 
-var $  = require('jquery');
-injectJQuery(window);
-
-var _       = require('lodash'),
+var $       = require('jquery'),
+    _       = require('lodash'),
     angular = require('angular');
 
 require('bootstrap/dist/js/bootstrap');
@@ -93,10 +91,6 @@ $(function() {
         strictDi: true
     });
 });
-
-function injectJQuery(root) {
-    root.$ = root.jQuery = $;
-}
 
 // TODO remove if no prototype
 function injectDummy() {

@@ -36,6 +36,11 @@ module.exports = function(config) {
                 }]
             },
             plugins: [
+                new webpack.ProvidePlugin({
+                    $: 'jquery',
+                    jQuery: 'jquery',
+                    'window.jQuery': 'jquery'
+                }),
                 new webpack.DefinePlugin({
                     CONFIG: JSON.stringify({
                         'app.id': 'xxx-address-book',
