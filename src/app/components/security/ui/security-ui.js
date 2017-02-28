@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @author ankostyuk
  */
@@ -54,7 +56,7 @@ module.exports = angular.module('app.security.ui', [])
                     });
                 }
             }]
-        }
+        };
     }])
     //
     .directive('appSignupForm', ['$rootScope', 'appHelper', 'securityService', function($rootScope, appHelper, securityService) {
@@ -102,7 +104,7 @@ module.exports = angular.module('app.security.ui', [])
                     reset();
                 });
             }]
-        }
+        };
     }])
     //
     .directive('appLoginForm', ['$rootScope', 'appHelper', 'securityService', function($rootScope, appHelper, securityService) {
@@ -150,7 +152,7 @@ module.exports = angular.module('app.security.ui', [])
                     reset();
                 });
             }]
-        }
+        };
     }])
     // TODO move to app.directives
     .directive('appExtraValidationInfo', [function() {
@@ -158,7 +160,7 @@ module.exports = angular.module('app.security.ui', [])
             restrict: 'A',
             template: templates['extra-validation-info'],
             scope: false
-        }
+        };
     }])
     //
     .directive('appUserInfo', ['$rootScope', 'securityService', function($rootScope, securityService) {
@@ -181,6 +183,6 @@ module.exports = angular.module('app.security.ui', [])
                     $scope.user = securityService.getUser();
                 });
             }]
-        }
+        };
     }]);
 //

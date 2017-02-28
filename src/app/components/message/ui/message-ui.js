@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @author ankostyuk
  */
@@ -33,6 +35,6 @@ module.exports = angular.module('app.message.ui', [])
                     $scope.isShown = true;
                 });
             }]
-        }
+        };
     }]);
 //

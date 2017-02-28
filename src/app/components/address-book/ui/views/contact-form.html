@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="connection-cell connection-value" app-address-book-contact-inline-edit>
-                        <span class="text inline-edited xxx" ng-show="connection.value">{{connection.value}}</span>
+                        <span class="text inline-edited" ng-show="connection.value">{{connection.value}}</span>
                         <span class="text inline-edited" ng-hide="connection.value">&mdash;&nbsp;{{_tr('validation.contacts.connection.' + connection.type + '.empty')}}<span class="glyphicon glyphicon-asterisk text-danger"></span></span>
                         <div class="inline edit-control inline-edit-control">
                             <input class="form-control inline-edit-element" type="text" ng-model="connection.value" required>

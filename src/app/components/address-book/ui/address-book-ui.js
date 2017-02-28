@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @author ankostyuk
  */
@@ -109,7 +111,7 @@ module.exports = angular.module('app.address-book.ui', [])
                     reset();
                 });
             }]
-        }
+        };
     }])
     //
     .directive('appAddressBookIntro', [function() {
@@ -117,7 +119,7 @@ module.exports = angular.module('app.address-book.ui', [])
             restrict: 'A',
             template: templates['intro'],
             scope: false
-        }
+        };
     }])
     //
     .directive('appAddressBookContacts', [function() {
@@ -125,7 +127,7 @@ module.exports = angular.module('app.address-book.ui', [])
             restrict: 'A',
             template: templates['contacts'],
             scope: false
-        }
+        };
     }])
     //
     .directive('appAddressBookContactForm', ['$timeout', 'Contact', function($timeout, Contact) {
@@ -209,7 +211,7 @@ module.exports = angular.module('app.address-book.ui', [])
                     return !angular.equals($scope.currentContact, $scope.editedContact);
                 }
             }]
-        }
+        };
     }])
     //
     .directive('appAddressBookContactInlineEdit', [function() {
@@ -240,6 +242,6 @@ module.exports = angular.module('app.address-book.ui', [])
                     });
                 //
             }
-        }
+        };
     }]);
 //

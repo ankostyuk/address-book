@@ -1,3 +1,5 @@
+'use strict';
+
 //
 var path    = require('path'),
     langs   = require('../app/langs');

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @author ankostyuk
  */
@@ -68,6 +70,6 @@ module.exports = angular.module('i18n', [])
         //
         this.getLangUrls = function() {
             return langUrls;
-        }
+        };
     }]);
 //
