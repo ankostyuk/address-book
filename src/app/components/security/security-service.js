@@ -114,7 +114,7 @@ module.exports = angular.module('app.security.service', [])
                     errorSignin(response, errorHandler);
                 }
             );
-        }
+        };
 
         //
         this.signup = function(signupData, successHandler, errorHandler) {
@@ -126,12 +126,12 @@ module.exports = angular.module('app.security.service', [])
                     errorSignin(response, errorHandler);
                 }
             );
-        }
+        };
 
         //
         this.logout = function() {
             User.logout(signout);
-        }
+        };
 
         //
         this.onLoginRequired = function(callback) {
