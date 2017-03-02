@@ -25,36 +25,37 @@
 .app-header {
     margin-top: 40px;
     margin-bottom: 54px;
-}
 
-.app-header h1 {
-    margin: -18px 0 0 0;
-    padding: 0;
-    display: inline-block;
-    width: 100%;
-    .text-ellipsis;
-}
+    h1 {
+        margin: -18px 0 0 0;
+        padding: 0;
+        display: inline-block;
+        width: 100%;
+        .text-ellipsis;
+    }
 
-/* lang switch bring to front */
-.app-header [app-lang-switch] {
-    position: relative;
-}
-.app-header [app-lang-switch] ul {
-    position: absolute;
-    z-index: 1500000;
+    /* lang switch bring to front */
+    [app-lang-switch] {
+        position: relative;
 
-    top: -11px;
-    right: 0;
+        ul {
+            position: absolute;
+            z-index: 1500000;
 
-    margin: 0;
-    padding: 10px 20px 0 5px;
+            top: -11px;
+            right: 0;
 
-    background-color: @defaultBackgroundColor;
-    border-left: 1px solid @defaultBackgroundColor;
-    border-top: 1px solid @defaultBackgroundColor;
-    border-bottom: 1px solid @defaultBackgroundColor;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+            margin: 0;
+            padding: 10px 20px 0 5px;
+
+            background-color: @defaultBackgroundColor;
+            border-left: 1px solid @defaultBackgroundColor;
+            border-top: 1px solid @defaultBackgroundColor;
+            border-bottom: 1px solid @defaultBackgroundColor;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+    }
 }
 
 /* app-footer */
